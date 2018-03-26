@@ -1,3 +1,5 @@
+Forked from Buzzfeed's [libgif-js](https://github.com/buzzfeed/libgif-js) and make it hostable as an npm module.
+
 # Overview
 
 Forked from the excelent jsgif project (https://github.com/shachaf/jsgif), which was implemented as a bookmarklet to manipulate animated gifs (http://slbkbs.org/jsgif).
