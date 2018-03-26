@@ -1,6 +1,6 @@
 {
   "name": "libgif",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "JavaScript GIF parser and player forked from Buzzfeed",
   "main": "libgif.js",
   "scripts": {
