@@ -29,6 +29,7 @@
 		max_width			Optional. Scale images over max_width down to max_width. Helpful with mobile.
  		on_end				Optional. Add a callback for when the gif reaches the end of a single loop (one iteration). The first argument passed will be the gif HTMLElement.
 		loop_delay			Optional. The amount of time to pause (in ms) after each single loop (iteration).
+		draw				Optional. Determines whether the gif will be drawn to the screen at all. True by default. If false, it overrides draw_while_loading and show_progress_bar
 		draw_while_loading	Optional. Determines whether the gif will be drawn to the canvas whilst it is loaded.
 		show_progress_bar	Optional. Only applies when draw_while_loading is set to true.
 
@@ -462,6 +463,7 @@
 
         var onEndListener = (options.hasOwnProperty('on_end') ? options.on_end : null);
         var loopDelay = (options.hasOwnProperty('loop_delay') ? options.loop_delay : 0);
+        var masterDraw = (options.hasOwnProperty('draw') ? options.draw : true);
         var overrideLoopMode = (options.hasOwnProperty('loop_mode') ? options.loop_mode : 'auto');
         var drawWhileLoading = (options.hasOwnProperty('draw_while_loading') ? options.draw_while_loading : true);
         var showProgressBar = drawWhileLoading ? (options.hasOwnProperty('show_progress_bar') ? options.show_progress_bar : true) : false;
@@ -844,7 +846,11 @@
                     canvas.width = hdr.width * get_canvas_scale();
                     canvas.height = hdr.height * get_canvas_scale();
                 }
-                player.init();
+
+                if ( masterDraw ) {
+                    player.init();
+                }
+
                 loading = false;
                 if (load_callback) {
                     load_callback(gif);
@@ -860,6 +866,10 @@
             canvas = document.createElement('canvas');
             ctx = canvas.getContext('2d');
             toolbar = document.createElement('div');
+
+            if ( !masterDraw ) {
+                canvas.style.display = 'none';
+            }
 
             tmpCanvas = document.createElement('canvas');
 
@@ -988,5 +998,3 @@
 
     return SuperGif;
 }));
-
-
