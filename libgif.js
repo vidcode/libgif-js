@@ -51,6 +51,7 @@
 		get_auto_play		Whether or not the gif is set to play automatically
 		get_length			The number of frames in the gif
 		get_current_frame	The index of the currently displayed frame of the gif
+		get_frames			The processed frame data for the gif
 
 		For additional customization (viewport inside iframe) these params may be passed:
 		c_w, c_h - width and height of canvas
@@ -920,6 +921,7 @@
             get_playing      : function() { return playing },
             get_canvas       : function() { return canvas },
             get_canvas_scale : function() { return get_canvas_scale() },
+            get_frames       : function() { return frames },
             get_loading      : function() { return loading },
             get_auto_play    : function() { return options.auto_play },
             get_length       : function() { return player.length() },
